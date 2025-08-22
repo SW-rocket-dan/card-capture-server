@@ -17,6 +17,7 @@ class DevLoginController(
 
     @PostMapping("/api/v1/dev/auth/login")
     fun login(@RequestBody request: DevLoginRequest): ResponseEntity<LoginResponse> {
+        println("?/?==============실행된다?")
         val result = devLoginUseCase.login(request.oauthId);
         return ResponseEntity.ok()
             .body(LoginResponse.from(result))

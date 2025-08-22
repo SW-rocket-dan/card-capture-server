@@ -2,15 +2,30 @@ package app.api.member.adapter.out.jwt
 
 import app.api.member.application.port.out.IssueTokenPort
 import app.api.member.domain.Member
+import io.jsonwebtoken.Jwts
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
+import java.time.Instant
+import java.util.Date
 import java.util.UUID
+import javax.crypto.SecretKey
 
 @Service
-class JwtTokenAdapter : IssueTokenPort {
+class JwtTokenAdapter(
+    private val jwtProperties: JwtProperties,
+     private val accessKey: SecretKey
+) : IssueTokenPort {
 
     override fun issue(member: Member): String {
-        // TODO : Jwt 로직 추가
-        return UUID.randomUUID().toString()
+        val now = Instant.now()
+        val exp = now.plus(jwtProperties.accessTtl)
+        return Jwts.builder()
+            .issuer(jwtProperties.issuer)
+            .subject(member.id.toString())
+            .issuedAt(Date.from(now))
+            .expiration(Date.from(exp))
+            .signWith(accessKey)
+            .compact()
     }
 
 

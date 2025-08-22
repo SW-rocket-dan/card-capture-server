@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    default: local
   datasource:
     url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
     username: ${DB_USER}
@@ -7,3 +9,21 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.MySQL8Dialect
+
+
+auth:
+  jwt:
+    issuer: card-capture
+    secret: ${JWT_SECRET}
+    access-ttl: 1h
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+auth:
+  jwt:
+    access-ttl: 1d
