@@ -1,4 +1,4 @@
-package app.api.adapter.`in`
+package app.api.member.adapter.`in`
 
 class TestController {
 
