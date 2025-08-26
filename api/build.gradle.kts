@@ -34,7 +34,7 @@ dependencies {
 
     // --- test ---
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
-        exclude(group = "org.mockito") // Mockito 전체 제외(권장)
+        exclude(group = "org.mockito")
     }
     testImplementation("io.mockk:mockk:latest.release")
     testImplementation("com.ninja-squad:springmockk:latest.release")

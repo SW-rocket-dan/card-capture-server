@@ -6,12 +6,13 @@ import io.jsonwebtoken.Jwts
 import org.springframework.stereotype.Service
 import java.time.Instant
 import java.util.Date
+
 import javax.crypto.SecretKey
 
 @Service
 class JwtTokenAdapter(
     private val jwtProperties: JwtProperties,
-     private val accessKey: SecretKey
+    private val accessKey: SecretKey
 ) : IssueTokenPort {
 
     override fun issue(member: Member): String {
@@ -25,6 +26,5 @@ class JwtTokenAdapter(
             .signWith(accessKey)
             .compact()
     }
-
 
 }

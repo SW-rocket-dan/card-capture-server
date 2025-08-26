@@ -12,10 +12,10 @@ class MemberPersistenceAdapter(
 
     override fun findByOauthIdAndProvider(oauthId: String, oauthProvider: OAuthProvider): Member? {
         return japMemberRepository.findByOauthIdAndOauthProvider(
-            oauthId,
-            JpaMemberMapper.toJpaOAuthProvider(oauthProvider),
+            oauthId = oauthId,
+            oauthProvider = JpaOAuthProvider.fromDomain(oauthProvider),
         )
-            ?.let { jpa -> JpaMemberMapper.toDomainMember(jpa) }
+            ?.let { jpaMember -> jpaMember.toDomain() }
     }
 
 }

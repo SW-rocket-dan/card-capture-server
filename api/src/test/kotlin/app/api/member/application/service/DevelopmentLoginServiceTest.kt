@@ -24,7 +24,7 @@ class DevelopmentLoginServiceTest(
     @Test
     fun `등록된 사용자면 토큰을 발급한다`() {
         val oauthId = "test-user-id"
-        val member = Member(id = 1L, OAuthProvider = OAuthProvider.GOOGLE, oauthId = oauthId)
+        val member = Member(id = 1L, oauthProvider = OAuthProvider.GOOGLE, oauthId = oauthId)
 
         every { loadMemberPort.findByOauthIdAndProvider(oauthId, any()) } returns member
         every { issueTokenPort.issue(member) } returns "token"
