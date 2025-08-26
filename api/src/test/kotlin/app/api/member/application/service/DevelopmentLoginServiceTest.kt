@@ -2,7 +2,7 @@ package app.api.member.application.service
 
 import app.api.member.application.port.inbound.DevelopmentLoginUseCase
 import app.api.member.application.port.outbound.IssueTokenPort
-import app.api.member.application.port.outbound.LoadUserPort
+import app.api.member.application.port.outbound.LoadMemberPort
 import app.api.member.domain.Member
 import app.api.member.domain.Provider
 import io.mockk.every
@@ -16,9 +16,9 @@ class DevelopmentLoginServiceTest(
 
 ) {
 
-    private val loadUserPort: LoadUserPort = mockk<LoadUserPort>()
+    private val loadMemberPort: LoadMemberPort = mockk<LoadMemberPort>()
     private val issueTokenPort: IssueTokenPort = mockk<IssueTokenPort>()
-    private val sut: DevelopmentLoginUseCase = DevelopmentLoginService(loadUserPort, issueTokenPort)
+    private val sut: DevelopmentLoginUseCase = DevelopmentLoginService(loadMemberPort, issueTokenPort)
 
 
     @Test
@@ -26,14 +26,14 @@ class DevelopmentLoginServiceTest(
         val oauthId = "test-user-id"
         val member = Member(id = 1L, provider = Provider.GOOGLE, oauthId = oauthId)
 
-        every { loadUserPort.findByOauthIdAndProvider(oauthId, any()) } returns member
+        every { loadMemberPort.findByOauthIdAndProvider(oauthId, any()) } returns member
         every { issueTokenPort.issue(member) } returns "token"
 
         val token = sut.login(oauthId)
 
         assertThat(token).isEqualTo("token")
         verify {
-            loadUserPort.findByOauthIdAndProvider(oauthId, Provider.GOOGLE)
+            loadMemberPort.findByOauthIdAndProvider(oauthId, Provider.GOOGLE)
             issueTokenPort.issue(member)
         }
     }
@@ -42,11 +42,11 @@ class DevelopmentLoginServiceTest(
     @Test
     fun `등록되지 않은 사용자는 예외를 반환한다`() {
         val oauthId = "unknown"
-        every { loadUserPort.findByOauthIdAndProvider(oauthId, Provider.GOOGLE) } returns null
+        every { loadMemberPort.findByOauthIdAndProvider(oauthId, Provider.GOOGLE) } returns null
 
         assertThatThrownBy { sut.login(oauthId) }.isInstanceOf(IllegalArgumentException::class.java)
         verify {
-            loadUserPort.findByOauthIdAndProvider(oauthId, Provider.GOOGLE)
+            loadMemberPort.findByOauthIdAndProvider(oauthId, Provider.GOOGLE)
         }
         verify(exactly = 0) { issueTokenPort.issue(any()) }
     }
