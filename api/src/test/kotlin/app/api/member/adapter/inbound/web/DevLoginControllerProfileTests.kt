@@ -1,4 +1,4 @@
-package app.api.member.adapter.`in`.web
+package app.api.member.adapter.inbound.web
 
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test

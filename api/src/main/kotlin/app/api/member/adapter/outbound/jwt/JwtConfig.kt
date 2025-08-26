@@ -1,4 +1,4 @@
-package app.api.member.adapter.out.jwt
+package app.api.member.adapter.outbound.jwt
 
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys

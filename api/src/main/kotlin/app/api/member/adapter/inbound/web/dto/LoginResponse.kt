@@ -1,4 +1,4 @@
-package app.api.member.adapter.`in`.web.dto
+package app.api.member.adapter.inbound.web.dto
 
 class LoginResponse(
     val accessToken: String

@@ -1,13 +1,11 @@
-package app.api.member.adapter.out.jwt
+package app.api.member.adapter.outbound.jwt
 
-import app.api.member.application.port.out.IssueTokenPort
+import app.api.member.application.port.outbound.IssueTokenPort
 import app.api.member.domain.Member
 import io.jsonwebtoken.Jwts
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 import java.time.Instant
 import java.util.Date
-import java.util.UUID
 import javax.crypto.SecretKey
 
 @Service

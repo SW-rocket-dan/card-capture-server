@@ -1,8 +1,8 @@
 package app.api.member.application.service
 
-import app.api.member.application.port.`in`.DevLoginUseCase
-import app.api.member.application.port.out.IssueTokenPort
-import app.api.member.application.port.out.LoadUserPort
+import app.api.member.application.port.inbound.DevLoginUseCase
+import app.api.member.application.port.outbound.IssueTokenPort
+import app.api.member.application.port.outbound.LoadUserPort
 import app.api.member.domain.Member
 import app.api.member.domain.Provider
 import io.mockk.every

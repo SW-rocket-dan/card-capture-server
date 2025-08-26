@@ -1,6 +1,6 @@
-package app.api.member.adapter.out.persistence
+package app.api.member.adapter.outbound.persistence
 
-import app.api.member.application.port.out.LoadUserPort
+import app.api.member.application.port.outbound.LoadUserPort
 import app.api.member.domain.Member
 import app.api.member.domain.Provider
 import org.springframework.stereotype.Service

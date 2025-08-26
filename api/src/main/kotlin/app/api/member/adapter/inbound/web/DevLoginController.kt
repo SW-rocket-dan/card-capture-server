@@ -1,8 +1,8 @@
-package app.api.member.adapter.`in`.web
+package app.api.member.adapter.inbound.web
 
-import app.api.member.adapter.`in`.web.dto.DevLoginRequest
-import app.api.member.adapter.`in`.web.dto.LoginResponse
-import app.api.member.application.port.`in`.DevLoginUseCase
+import app.api.member.adapter.inbound.web.dto.DevLoginRequest
+import app.api.member.adapter.inbound.web.dto.LoginResponse
+import app.api.member.application.port.inbound.DevLoginUseCase
 import org.springframework.context.annotation.Profile
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
@@ -17,7 +17,6 @@ class DevLoginController(
 
     @PostMapping("/api/v1/dev/auth/login")
     fun login(@RequestBody request: DevLoginRequest): ResponseEntity<LoginResponse> {
-        println("?/?==============실행된다?")
         val result = devLoginUseCase.login(request.oauthId);
         return ResponseEntity.ok()
             .body(LoginResponse.from(result))

@@ -1,4 +1,4 @@
-package app.api.member.adapter.out.jwt
+package app.api.member.adapter.outbound.jwt
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import java.time.Duration

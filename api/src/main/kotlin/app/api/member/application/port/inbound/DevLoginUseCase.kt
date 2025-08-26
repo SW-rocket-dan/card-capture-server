@@ -1,4 +1,4 @@
-package app.api.member.application.port.`in`
+package app.api.member.application.port.inbound
 
 interface DevLoginUseCase {
 
