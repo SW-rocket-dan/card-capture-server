@@ -33,9 +33,11 @@ dependencies {
 
 
     // --- test ---
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("io.mockk:mockk:1.13.12")
-
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group = "org.mockito") // Mockito 전체 제외(권장)
+    }
+    testImplementation("io.mockk:mockk:latest.release")
+    testImplementation("com.ninja-squad:springmockk:latest.release")
 
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

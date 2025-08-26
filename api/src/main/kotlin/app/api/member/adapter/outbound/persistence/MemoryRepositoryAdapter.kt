@@ -2,23 +2,16 @@ package app.api.member.adapter.outbound.persistence
 
 import app.api.member.application.port.outbound.LoadMemberPort
 import app.api.member.domain.Member
-import app.api.member.domain.Provider
+import app.api.member.domain.OAuthProvider
 import org.springframework.stereotype.Service
 
-@Service
+//@Service
 class MemoryRepositoryAdapter : LoadMemberPort {
 
     private val store = mutableMapOf<String, Member>()
 
-    init {
-        store["test-user"] = Member(
-            id = 1L,
-            oauthId = "test-user",
-            provider = Provider.GOOGLE
-        )
-    }
 
-    override fun findByOauthIdAndProvider(oauthId: String, provider: Provider): Member? {
+    override fun findByOauthIdAndProvider(oauthId: String, oauthProvider: OAuthProvider): Member? {
         return store[oauthId]
     }
 }

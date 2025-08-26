@@ -1,8 +1,8 @@
 package app.api.member.domain
 
 class Member (
-    val id: Long = 0L,
-    val provider: Provider,
+    val id: Long?,
+    val oauthProvider: OAuthProvider,
     val oauthId : String,
 ) {
 }

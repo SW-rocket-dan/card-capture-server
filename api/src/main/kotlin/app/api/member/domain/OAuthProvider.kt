@@ -1,5 +1,5 @@
 package app.api.member.domain
 
-enum class Provider {
+enum class OAuthProvider {
     GOOGLE
 }
