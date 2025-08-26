@@ -1,5 +1,5 @@
 package app.api.member.adapter.inbound.web.dto
 
-data class DevLoginRequest(
+data class DevelopmentLoginRequest(
     val oauthId: String,
 )

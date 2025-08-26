@@ -1,16 +1,16 @@
 package app.api.member.application.service
 
-import app.api.member.application.port.inbound.DevLoginUseCase
+import app.api.member.application.port.inbound.DevelopmentLoginUseCase
 import app.api.member.application.port.outbound.IssueTokenPort
 import app.api.member.application.port.outbound.LoadUserPort
 import app.api.member.domain.Provider
 import org.springframework.stereotype.Service
 
 @Service
-class DevLoginService(
+class DevelopmentLoginService(
     private val loadUserPort: LoadUserPort,
     private val issueTokenPort: IssueTokenPort,
-) : DevLoginUseCase {
+) : DevelopmentLoginUseCase {
 
     override fun login(oauthId: String): String {
         val user = loadUserPort.findByOauthIdAndProvider(oauthId, Provider.GOOGLE)

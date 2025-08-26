@@ -1,6 +1,6 @@
 package app.api.member.application.service
 
-import app.api.member.application.port.inbound.DevLoginUseCase
+import app.api.member.application.port.inbound.DevelopmentLoginUseCase
 import app.api.member.application.port.outbound.IssueTokenPort
 import app.api.member.application.port.outbound.LoadUserPort
 import app.api.member.domain.Member
@@ -12,13 +12,13 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 
-class DevLoginServiceTest(
+class DevelopmentLoginServiceTest(
 
 ) {
 
     private val loadUserPort: LoadUserPort = mockk<LoadUserPort>()
     private val issueTokenPort: IssueTokenPort = mockk<IssueTokenPort>()
-    private val sut: DevLoginUseCase = DevLoginService(loadUserPort, issueTokenPort)
+    private val sut: DevelopmentLoginUseCase = DevelopmentLoginService(loadUserPort, issueTokenPort)
 
 
     @Test

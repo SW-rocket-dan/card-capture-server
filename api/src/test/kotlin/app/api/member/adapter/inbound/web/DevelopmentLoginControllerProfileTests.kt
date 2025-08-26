@@ -10,22 +10,23 @@ import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.post
 
-class DevLoginControllerProfileTests {
+class DevelopmentLoginControllerProfileTests {
 
     @Nested
     @SpringBootTest
     @AutoConfigureMockMvc
     @ActiveProfiles("dev")
     inner class DevProfile(
-        @Autowired private val mockMvc : MockMvc
+        @Autowired private val mockMvc : MockMvc,
+        @Autowired private val objectMapper: com.fasterxml.jackson.databind.ObjectMapper
     ) {
         @Test
         fun `dev 환경에서 로그인 성공`(){
+
+            val body = mapOf("oauthId" to "test-user")
             mockMvc.post("/api/v1/dev/auth/login") {
                 contentType = MediaType.APPLICATION_JSON
-                content = """
-                {"oauthId":"test-user"}
-            """.trimIndent()
+                content = objectMapper.writeValueAsString(body)
             }.andExpect {
                 status { isOk() }
                 jsonPath("$.accessToken") { exists() }
@@ -39,15 +40,15 @@ class DevLoginControllerProfileTests {
     @AutoConfigureMockMvc
     @ActiveProfiles("prod")
     inner class ProdProfile(
-        @Autowired private val mockMvc : MockMvc
+        @Autowired private val mockMvc : MockMvc,
+        @Autowired private val objectMapper: com.fasterxml.jackson.databind.ObjectMapper
     ) {
         @Test
         fun `prod 환경에서 로그인 실패`(){
+            val body = mapOf("oauthId" to "test-user")
             mockMvc.post("/api/v1/dev/auth/login") {
                 contentType = MediaType.APPLICATION_JSON
-                content = """
-                {"oauthId":"test-user"}
-            """.trimIndent()
+                content = objectMapper.writeValueAsString(body)
             }.andExpect {
                 status { isNotFound() }
             }

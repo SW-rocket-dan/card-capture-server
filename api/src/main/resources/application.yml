@@ -14,8 +14,8 @@ spring:
 auth:
   jwt:
     issuer: card-capture
-    secret: ${JWT_SECRET}
-    access-ttl: 1h
+    secret-key: ${JWT_SECRET}
+    access-token-expiration: 1h
 
 ---
 

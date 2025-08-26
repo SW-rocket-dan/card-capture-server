@@ -11,7 +11,7 @@ class JwtConfig {
 
     @Bean
     fun accessKey(properties: JwtProperties): SecretKey {
-        val keyBytes = Decoders.BASE64.decode(properties.secret)
+        val keyBytes = Decoders.BASE64.decode(properties.secretKey)
         return Keys.hmacShaKeyFor(keyBytes)
     }
 }

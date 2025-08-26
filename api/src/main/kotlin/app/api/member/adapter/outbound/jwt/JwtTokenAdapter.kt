@@ -16,12 +16,12 @@ class JwtTokenAdapter(
 
     override fun issue(member: Member): String {
         val now = Instant.now()
-        val exp = now.plus(jwtProperties.accessTtl)
+        val expiration = now.plus(jwtProperties.accessTokenExpiration)
         return Jwts.builder()
             .issuer(jwtProperties.issuer)
             .subject(member.id.toString())
             .issuedAt(Date.from(now))
-            .expiration(Date.from(exp))
+            .expiration(Date.from(expiration))
             .signWith(accessKey)
             .compact()
     }
