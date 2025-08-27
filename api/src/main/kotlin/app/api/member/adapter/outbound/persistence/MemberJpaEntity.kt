@@ -12,11 +12,11 @@ import jakarta.persistence.Table
 
 @Entity
 @Table(name = "members")
-class JpaMember(
+class MemberJpaEntity(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Long?,
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -40,8 +40,8 @@ class JpaMember(
 
     companion object {
 
-        fun fromDomain(member: Member): JpaMember {
-            return JpaMember(
+        fun fromDomain(member: Member): MemberJpaEntity {
+            return MemberJpaEntity(
                 id = member.id,
                 oauthProvider = JpaOAuthProvider.fromDomain(member.oauthProvider),
                 oauthId = member.oauthId,

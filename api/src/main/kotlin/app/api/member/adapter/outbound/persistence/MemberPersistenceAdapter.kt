@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class MemberPersistenceAdapter(
-    private val japMemberRepository: JpaMemberRepository
+    private val memberJpaRepository: MemberJpaRepository
 ) : LoadMemberPort {
 
     override fun findByOauthIdAndProvider(oauthId: String, oauthProvider: OAuthProvider): Member? {
-        return japMemberRepository.findByOauthIdAndOauthProvider(
+        return memberJpaRepository.findByOauthIdAndOauthProvider(
             oauthId = oauthId,
             oauthProvider = JpaOAuthProvider.fromDomain(oauthProvider),
         )
