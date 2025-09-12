@@ -11,6 +11,7 @@ java {
 }
 
 dependencies {
+    implementation(project(":security"))
     implementation(project(":auth-adapter"))
     implementation(project(":member-adapter"))
 

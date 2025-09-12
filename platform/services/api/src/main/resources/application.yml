@@ -27,3 +27,7 @@ spring:
 auth:
   jwt:
     access-ttl: 1d
+
+logging:
+  level:
+    org.springframework.security: DEBUG

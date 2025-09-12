@@ -20,3 +20,12 @@ project(":member-application").projectDir = file("platform/member/application")
 project(":member-adapter").projectDir = file("platform/member/adapter")
 
 project(":platform-api").projectDir = file("platform/services/api")
+
+// ---------- libs ----------
+
+include(
+    "contracts-auth",
+    "security")
+
+project(":contracts-auth").projectDir = file("libs/contracts-auth")
+project(":security").projectDir = file("libs/security")

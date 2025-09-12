@@ -9,6 +9,7 @@ java {
 }
 
 dependencies {
+    implementation(project(":contracts-auth"))
     implementation(project(":member-domain"))
     implementation("org.springframework:spring-context")
     implementation("org.springframework:spring-tx")
