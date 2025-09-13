@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class PaymentApplication
 
 fun main(args: Array<String>) {
-	runApplication<PaymentApplication>(*args)
+    runApplication<PaymentApplication>(*args)
 }
