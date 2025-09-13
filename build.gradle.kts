@@ -29,7 +29,7 @@ subprojects {
 
 
         dependencies {
-            add("testRuntimeOnly", "org.junit.platform:junit-platform-launcher")
+            add("testRuntimeOnly", "org.junit.platform:junit-platform-launcher:1.13.3")
             add("testImplementation", "io.mockk:mockk:1.13.13")
         }
     }

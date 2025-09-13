@@ -1,5 +1,5 @@
 package app.cardcapture.member.domain
 
-enum class OAuthProvider {
+public enum class OAuthProvider {
     GOOGLE
 }

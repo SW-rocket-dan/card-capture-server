@@ -11,8 +11,8 @@ class MemberFacadeAdapter(
     private val memberQueryFacade: MemberQueryFacade,
 ) : LoadAuthMemberPort {
 
-    override fun loadMemberByOAuth(oauthId: String, authProvider: String): AuthMember {
-        val existMember = memberQueryFacade.findAuthMemberByOAuth(oauthId, authProvider)
+    override fun loadMemberByOAuth(oauthId: String, oauthProvider: OAuthProvider): AuthMember {
+        val existMember = memberQueryFacade.findAuthMemberByOAuth(oauthId, oauthProvider.name)
         return AuthMember(
             id = existMember.id,
             oauthId = oauthId,
@@ -21,8 +21,7 @@ class MemberFacadeAdapter(
     }
 
     // TODO: 다른 곳에서 사용하는 상황이 발생하면 분리
-    private fun mapProvider(code: String): OAuthProvider = when (code.lowercase()) {
-        "google" -> OAuthProvider.GOOGLE
-        else -> throw IllegalArgumentException("지원하지 않는 OAuth Provider: $code")
-    }
+    private fun mapProvider(code: String): OAuthProvider =
+        OAuthProvider.entries.firstOrNull { it.name.equals(code, ignoreCase = true) }
+            ?: throw IllegalArgumentException("지원하지 않는 OAuth Provider: $code")
 }

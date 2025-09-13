@@ -1,25 +1,21 @@
 package app.cardcapture.lib.security
 
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.oauth2.jwt.JwtDecoder
-import org.springframework.security.oauth2.jwt.NimbusJwtDecoder
 import org.springframework.security.web.AuthenticationEntryPoint
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.CorsConfigurationSource
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
-import java.nio.charset.StandardCharsets
-import javax.crypto.spec.SecretKeySpec
 
 @Configuration
 @ConditionalOnClass(HttpSecurity::class)
 class SecurityConfig(
-    @Value("\${auth.jwt.secret-key}") private val secret: String,
 ) {
 
     companion object {
@@ -30,17 +26,11 @@ class SecurityConfig(
         )
     }
     @Bean
+    @ConditionalOnMissingBean(AuthenticationEntryPoint::class)
     fun authEntryPoint(): AuthenticationEntryPoint {
         return CustomAuthenticationEntryPoint()
     }
 
-
-    @Bean
-    fun jwtDecoder(): JwtDecoder {
-        val keyBytes = secret.toByteArray(StandardCharsets.UTF_8)
-        val secretKey = SecretKeySpec(keyBytes, "HmacSHA256")
-        return NimbusJwtDecoder.withSecretKey(secretKey).build()
-    }
 
     @Bean
     fun filterChain(http: HttpSecurity, jwtDecoder: JwtDecoder, authEntryPoint : AuthenticationEntryPoint): SecurityFilterChain {
@@ -49,6 +39,7 @@ class SecurityConfig(
             .cors { }
             .formLogin { it.disable() }
             .httpBasic { it.disable() }
+            .sessionManagement { it.sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests {
                 it.requestMatchers(*WHITE_LIST).permitAll()
                 it.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()

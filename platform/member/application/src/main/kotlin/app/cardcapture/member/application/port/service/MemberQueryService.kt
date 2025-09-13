@@ -14,7 +14,7 @@ class MemberQueryService(
 ): MemberQueryFacade {
 
     override fun findAuthMemberByOAuth(oauthId: String, oauthProvider: String): AuthMemberView {
-        val member = loadMemberPort.findByOAuth(oauthId, OAuthProvider.valueOf(oauthProvider))
+        val member = loadMemberPort.findByOAuth(oauthId, OAuthProvider.valueOf(oauthProvider.uppercase()))
             ?: throw IllegalArgumentException("등록되지 않은 사용자입니다.")
         return AuthMemberView(
             id = member.id,

@@ -1,8 +1,8 @@
 package app.cardcapture.member.domain
 
-class Member (
-    val id: Long,
-    val oauthProvider: OAuthProvider,
-    val oauthId : String,
+public class Member(
+    public val id: Long,
+    public val oauthProvider: OAuthProvider,
+    public val oauthId: String,
 ) {
 }
