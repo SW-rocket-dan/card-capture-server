@@ -4,10 +4,6 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-java {
-    toolchain { languageVersion.set(JavaLanguageVersion.of(21)) }
-}
-
 dependencies {
     implementation(project(":contracts-auth"))
     implementation(project(":member-domain"))

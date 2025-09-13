@@ -4,8 +4,6 @@ plugins {
     id("io.spring.dependency-management")
 }
 
-
-java { toolchain { languageVersion.set(JavaLanguageVersion.of(21)) } }
 dependencies {
     // contracts-auth 구현
     implementation(project(":contracts-auth"))

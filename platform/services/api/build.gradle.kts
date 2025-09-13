@@ -6,10 +6,6 @@ plugins {
     kotlin("plugin.jpa")
 }
 
-java {
-    toolchain { languageVersion.set(JavaLanguageVersion.of(21)) }
-}
-
 dependencies {
     implementation(project(":security"))
     implementation(project(":auth-adapter"))
