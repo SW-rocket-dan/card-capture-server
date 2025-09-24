@@ -21,6 +21,18 @@ project(":member-adapter").projectDir = file("platform/member/adapter")
 
 project(":platform-api").projectDir = file("platform/services/api")
 
+// ---------- payment ----------
+include(
+    "voucher-domain",
+    "voucher-application",
+    "voucher-adapter",
+    "payment-api")
+
+project(":voucher-domain").projectDir = file("payment/voucher/domain")
+project(":voucher-application").projectDir = file("payment/voucher/application")
+project(":voucher-adapter").projectDir = file("payment/voucher/adapter")
+project(":payment-api").projectDir = file("payment/services/api")
+
 // ---------- libs ----------
 
 include(

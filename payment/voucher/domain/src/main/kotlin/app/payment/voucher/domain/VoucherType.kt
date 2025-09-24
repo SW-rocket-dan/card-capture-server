@@ -1,4 +1,4 @@
-package app.payment.domain.voucher
+package app.payment.voucher.domain
 
 enum class VoucherType {
     AI_POSTER_GENERATE,
