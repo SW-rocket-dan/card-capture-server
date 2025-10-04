@@ -12,7 +12,7 @@ class VoucherController(
     private val voucherUseCase: VoucherUseCase,
 ) {
     @GetMapping
-    fun getVouchers(): ResponseEntity<GetVouchersResponse> {
+    fun getPublishedVouchers(): ResponseEntity<GetVouchersResponse> {
         val vouchers = voucherUseCase.getPublishedVouchers()
         return ResponseEntity.ok()
             .body(GetVouchersResponse.from(vouchers))
