@@ -3,10 +3,10 @@ package app.payment.voucher.domain
 import java.time.OffsetDateTime
 
 class Voucher(
-    public val id: Long,
-    public val type: VoucherType,
-    public val consumptionType: ConsumptionType,
-    public var status: VoucherStatus,
-    public val createdAt: OffsetDateTime,
-    public var updatedAt: OffsetDateTime,
+    val id: Long,
+    val type: VoucherType,
+    val consumptionType: ConsumptionType,
+    var status: VoucherStatus,
+    val createdAt: OffsetDateTime,
+    var updatedAt: OffsetDateTime,
 )
