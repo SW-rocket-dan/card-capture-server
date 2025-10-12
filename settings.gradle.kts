@@ -26,11 +26,17 @@ include(
     "voucher-domain",
     "voucher-application",
     "voucher-adapter",
+    "payment-core-domain",
+    "payment-core-application",
+    "payment-core-adapter",
     "payment-api")
 
 project(":voucher-domain").projectDir = file("payment/voucher/domain")
 project(":voucher-application").projectDir = file("payment/voucher/application")
 project(":voucher-adapter").projectDir = file("payment/voucher/adapter")
+project(":payment-core-domain").projectDir = file("payment/payment-core/domain")
+project(":payment-core-application").projectDir = file("payment/payment-core/application")
+project(":payment-core-adapter").projectDir = file("payment/payment-core/adapter")
 project(":payment-api").projectDir = file("payment/services/api")
 
 // ---------- libs ----------
