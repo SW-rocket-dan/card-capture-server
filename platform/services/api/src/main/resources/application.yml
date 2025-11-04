@@ -17,6 +17,9 @@ auth:
     secret-key: ${JWT_SECRET}
     access-token-expiration: 1h
 
+openai:
+  key: ${OPENAI_KEY}
+
 ---
 
 spring:

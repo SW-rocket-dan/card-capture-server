@@ -1,7 +1,7 @@
 package app.cardcapture.ai.domain
 
 enum class ImageModel {
-    NANO_BANANA;
+    NANOBANANA;
 
     companion object {
         fun from(name: String): ImageModel =

@@ -1,6 +1,6 @@
-package domain
+package app.cardcapture.template.application.port.outbound.dto
 
-data class TemplateDesignPrompt(
+data class AiTemplateDesignPortCommand(
     val purpose: String,
     val texts: List<String>,
     val color: String,

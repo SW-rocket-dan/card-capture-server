@@ -1,7 +1,7 @@
 package app.cardcapture.ai.domain
 
-enum class LlmModel {
-    GPT, GEMINI;
+enum class LlmModel(val model : String) {
+    GPT("gpt-4o"), GEMINI("gemini-2.5-preview");
 
     companion object {
         fun from(name: String): LlmModel =

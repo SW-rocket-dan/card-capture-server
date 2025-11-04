@@ -13,6 +13,7 @@ dependencies {
     implementation("org.springframework:spring-aop")
 
 
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.mockito")
     }

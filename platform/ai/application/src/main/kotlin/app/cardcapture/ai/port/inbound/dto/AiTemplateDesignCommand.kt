@@ -8,6 +8,7 @@ data class AiTemplateDesignCommand private constructor(
     val imageModel: ImageModel,
     val purpose: String,
     val texts: List<String>,
+    val color: String,
     val prompt: String,
 ) {
 
@@ -18,6 +19,7 @@ data class AiTemplateDesignCommand private constructor(
             imageModel: String,
             purpose: String,
             texts: List<String>,
+            color : String,
             prompt: String
         ): AiTemplateDesignCommand {
 
@@ -26,6 +28,7 @@ data class AiTemplateDesignCommand private constructor(
                 imageModel = ImageModel.from(imageModel),
                 purpose = purpose,
                 texts = texts,
+                color = color,
                 prompt = prompt,
             )
         }
