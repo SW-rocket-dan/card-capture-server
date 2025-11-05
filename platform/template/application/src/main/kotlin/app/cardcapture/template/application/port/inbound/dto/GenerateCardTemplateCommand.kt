@@ -1,6 +1,5 @@
 package app.cardcapture.template.application.port.inbound.dto
 
-// TODO: class mapping
 data class GenerateCardTemplateCommand (
     val purpose: String,
     val texts: List<String>,

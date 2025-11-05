@@ -14,7 +14,7 @@ data class AiTemplateDesignCommand private constructor(
 
     companion object {
 
-        fun ofOtThrow(
+        fun ofOrThrow(
             llmModel: String,
             imageModel: String,
             purpose: String,

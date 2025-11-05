@@ -3,7 +3,7 @@ package app.cardcapture.template.adapter.inbound.web.dto
 import domain.Template
 
 
-data class GeneratedCardTemplateResponse(
+data class GenerateCardTemplateResponse(
     val id: Long,
     val userId: Long,
     val title: String,
@@ -23,8 +23,8 @@ data class GeneratedCardTemplateResponse(
 
     companion object {
 
-        fun from(template: Template): GeneratedCardTemplateResponse {
-            return GeneratedCardTemplateResponse(
+        fun from(template: Template): GenerateCardTemplateResponse {
+            return GenerateCardTemplateResponse(
                 id = template.id,
                 userId = template.userId,
                 title = template.title,

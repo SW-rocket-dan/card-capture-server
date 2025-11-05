@@ -17,15 +17,15 @@ class MetadataExtractor(
     private val llmSenderPort: LlmSenderPort
 ) {
 
-    private val _NAME_SPACE: String = "templateDesign"
-    private val _NAME: String = "metadata"
+    private val namespace: String = "templateDesign"
+    private val name: String = "metadata"
 
     fun extract(aiTemplateDesignCommand: AiTemplateDesignCommand): TemplateDesignMetadata {
 
         val prompt = promptLoader.load(
             PromptId(
-                _NAME_SPACE,
-                _NAME,
+                namespace,
+                name,
             ),
         )
         val userContent = buildString {

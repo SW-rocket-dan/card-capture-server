@@ -23,8 +23,6 @@ class SecurityConfig(
             "/actuator/**",
             "/api/v1/dev/auth/**",
             "/api/v1/auth/**",
-            "/test/ai",
-            "/test/ai2",
         )
     }
     @Bean

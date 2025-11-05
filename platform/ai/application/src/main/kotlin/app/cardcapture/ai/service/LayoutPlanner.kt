@@ -18,14 +18,14 @@ class LayoutPlanner(
     private val objectMapper: ObjectMapper
 ) {
 
-    private val _NAME_SPACE: String = "templateDesign"
-    private val _NAME: String = "layout"
+    private val namespace: String = "templateDesign"
+    private val name: String = "layout"
 
     fun plan(metadata: TemplateDesignMetadata, model : LlmModel) : TemplateLayoutPlan {
         val prompt = promptLoader.load(
             PromptId(
-                _NAME_SPACE,
-                _NAME
+                namespace,
+                name
             )
         )
 
