@@ -7,8 +7,8 @@ import app.cardcapture.template.application.port.outbound.AiTemplateDesignPort
 import app.cardcapture.template.application.port.outbound.GenerateImagePort
 import app.cardcapture.template.application.port.outbound.dto.AiTemplateDesignPortCommand
 import app.cardcapture.template.application.port.outbound.dto.GenerateImagePortCommand
-import domain.EditorPayload
-import domain.Template
+import app.cardcapture.template.domain.EditorPayload
+import app.cardcapture.template.domain.Template
 import org.springframework.stereotype.Service
 
 @Service

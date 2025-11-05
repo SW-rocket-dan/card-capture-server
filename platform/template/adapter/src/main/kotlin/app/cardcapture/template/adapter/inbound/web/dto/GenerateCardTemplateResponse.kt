@@ -1,6 +1,6 @@
 package app.cardcapture.template.adapter.inbound.web.dto
 
-import domain.Template
+import app.cardcapture.template.domain.Template
 
 
 data class GenerateCardTemplateResponse(

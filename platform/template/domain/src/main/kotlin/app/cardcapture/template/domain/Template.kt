@@ -1,4 +1,4 @@
-package domain
+package app.cardcapture.template.domain
 
 /*
 *  title, description 값을 따로 FE로 받지 않는다.
