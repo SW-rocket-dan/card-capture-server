@@ -104,4 +104,4 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Run platform tests
-        run: ./gradlew :platform-api:test :auth-domain:test :auth-application:test :auth-adapter:test :member-domain:test :member-application:test :member-adapter:test
+        run: ./gradlew :platform-api:test :auth-domain:test :auth-application:test :auth-adapter:test :member-domain:test :member-application:test :member-adapter:test :template-adapter:test :template-application:test :template-domain:test :ai-adapter:test :ai-application:test :ai-domain:test

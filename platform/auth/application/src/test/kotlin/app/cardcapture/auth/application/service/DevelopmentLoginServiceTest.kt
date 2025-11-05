@@ -33,7 +33,7 @@ class DevelopmentLoginServiceTest(
 
         assertThat(token).isEqualTo("token")
         verify {
-            loadMemberPort.loadMemberByOAuth(oauthId, OAuthProvider.GOOGLE.name)
+            loadMemberPort.loadMemberByOAuth(oauthId, OAuthProvider.GOOGLE)
             issueTokenPort.issue(member)
         }
     }

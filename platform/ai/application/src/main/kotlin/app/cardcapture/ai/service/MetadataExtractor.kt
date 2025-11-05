@@ -33,7 +33,7 @@ class MetadataExtractor(
             appendLine("Texts: ${aiTemplateDesignCommand.texts.joinToString(" | ")}")
             appendLine("Purpose: ${aiTemplateDesignCommand.purpose}")
             appendLine("Color: ${aiTemplateDesignCommand.color}")
-            appendLine("User Prompt: ${aiTemplateDesignCommand.prompt ?: "null"}")
+            appendLine("User Prompt: ${aiTemplateDesignCommand.prompt}")
         }.trim()
         val request = LlmRequest(
             model = aiTemplateDesignCommand.llmModel,
