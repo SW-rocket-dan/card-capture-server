@@ -1,0 +1,36 @@
+package app.cardcapture.ai.port.inbound.dto
+
+import app.cardcapture.ai.domain.ImageModel
+import app.cardcapture.ai.domain.LlmModel
+
+data class AiTemplateDesignCommand private constructor(
+    val llmModel: LlmModel,
+    val imageModel: ImageModel,
+    val purpose: String,
+    val texts: List<String>,
+    val color: String,
+    val prompt: String,
+) {
+
+    companion object {
+
+        fun ofOrThrow(
+            llmModel: String,
+            imageModel: String,
+            purpose: String,
+            texts: List<String>,
+            color : String,
+            prompt: String
+        ): AiTemplateDesignCommand {
+
+            return AiTemplateDesignCommand(
+                llmModel = LlmModel.from(llmModel),
+                imageModel = ImageModel.from(imageModel),
+                purpose = purpose,
+                texts = texts,
+                color = color,
+                prompt = prompt,
+            )
+        }
+    }
+}

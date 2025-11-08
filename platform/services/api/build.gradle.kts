@@ -10,6 +10,8 @@ dependencies {
     implementation(project(":security"))
     implementation(project(":auth-adapter"))
     implementation(project(":member-adapter"))
+    implementation(project(":ai-adapter"))
+    implementation(project(":template-adapter"))
 
 
     implementation("org.springframework.boot:spring-boot-starter-web")

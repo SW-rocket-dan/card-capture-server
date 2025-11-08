@@ -10,6 +10,12 @@ include(
     "member-domain",
     "member-application",
     "member-adapter",
+    "ai-domain",
+    "ai-application",
+    "ai-adapter",
+    "template-domain",
+    "template-application",
+    "template-adapter",
     "platform-api")
 
 project(":auth-domain").projectDir = file("platform/auth/domain")
@@ -18,6 +24,12 @@ project(":auth-adapter").projectDir = file("platform/auth/adapter")
 project(":member-domain").projectDir = file("platform/member/domain")
 project(":member-application").projectDir = file("platform/member/application")
 project(":member-adapter").projectDir = file("platform/member/adapter")
+project(":ai-domain").projectDir = file("platform/ai/domain")
+project(":ai-application").projectDir = file("platform/ai/application")
+project(":ai-adapter").projectDir = file("platform/ai/adapter")
+project(":template-domain").projectDir = file("platform/template/domain")
+project(":template-application").projectDir = file("platform/template/application")
+project(":template-adapter").projectDir = file("platform/template/adapter")
 
 project(":platform-api").projectDir = file("platform/services/api")
 

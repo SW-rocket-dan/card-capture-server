@@ -22,7 +22,7 @@ class SecurityConfig(
         private val WHITE_LIST = arrayOf(
             "/actuator/**",
             "/api/v1/dev/auth/**",
-            "/api/v1/auth/**"
+            "/api/v1/auth/**",
         )
     }
     @Bean
