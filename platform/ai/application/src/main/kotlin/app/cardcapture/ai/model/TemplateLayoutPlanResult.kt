@@ -1,6 +1,6 @@
 package app.cardcapture.ai.model
 
-data class TemplateLayoutPlan(
+data class TemplateLayoutPlanResult(
     val background: LayoutBackground,
     val layers: List<LayoutLayer>
 ) {

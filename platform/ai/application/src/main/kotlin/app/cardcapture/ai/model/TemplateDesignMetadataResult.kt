@@ -1,6 +1,6 @@
 package app.cardcapture.ai.model
 
-data class TemplateDesignMetadata(
+data class TemplateDesignMetadataResult(
     val purpose: String,
     val mood: String,
     val style: String,

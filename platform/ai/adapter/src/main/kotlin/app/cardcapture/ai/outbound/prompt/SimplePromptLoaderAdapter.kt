@@ -39,10 +39,15 @@ Your output will later be converted into:
 ---
 
 ## Input
-- Texts: {{texts}}
-- Purpose: {{purpose}}
-- Color: {{color}}
-- User Prompt (optional): {{userPrompt}}
+The user message will be provided **as a JSON object** with the following fields:
+
+```json
+{
+  "texts": ["string"],
+  "purpose": "string",
+  "color": "string",
+  "userPrompt": "string (optional)"
+}
 
 ---
 

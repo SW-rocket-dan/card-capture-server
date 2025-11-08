@@ -1,6 +1,6 @@
 package app.cardcapture.template.adapter.outbound
 
-import app.cardcapture.ai.model.TemplateLayoutPlan
+import app.cardcapture.ai.model.TemplateLayoutPlanResult
 import app.cardcapture.ai.port.inbound.AiTemplateDesignUseCase
 import app.cardcapture.ai.port.inbound.dto.AiTemplateDesignCommand
 import app.cardcapture.template.application.model.*
@@ -15,7 +15,7 @@ class AiTemplateDesignAdapter(
 ) : AiTemplateDesignPort {
 
     override fun design(prompt: AiTemplateDesignPortCommand): AiTemplateDesignResult {
-        val design: TemplateLayoutPlan = aiTemplateDesignUseCase.design(
+        val design: TemplateLayoutPlanResult = aiTemplateDesignUseCase.design(
             AiTemplateDesignCommand.ofOrThrow(
                 llmModel = "GPT",
                 imageModel = prompt.model,
@@ -29,7 +29,7 @@ class AiTemplateDesignAdapter(
         return design.toTemplateResult()
     }
 
-    private fun TemplateLayoutPlan.toTemplateResult(): AiTemplateDesignResult {
+    private fun TemplateLayoutPlanResult.toTemplateResult(): AiTemplateDesignResult {
         val bg = BackgroundPlanDto(
             mode = when (background.mode.uppercase()) {
                 "IMAGE" -> BackgroundModeDto.IMAGE
@@ -69,6 +69,6 @@ class AiTemplateDesignAdapter(
         )
     }
 
-    private fun TemplateLayoutPlan.LayoutPosition.toDto(): PositionDto =
+    private fun TemplateLayoutPlanResult.LayoutPosition.toDto(): PositionDto =
         PositionDto(x, y, width, height, rotate, zIndex, opacity)
 }
