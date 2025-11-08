@@ -4,7 +4,8 @@ import app.cardcapture.template.application.model.*
 import org.springframework.stereotype.Component
 
 @Component
-class EditorJsonConverter {
+class EditorJsonConverter(
+) {
 
     fun toJson(plan: AiTemplateDesignResult): String {
         val backgroundUrl =
@@ -13,11 +14,9 @@ class EditorJsonConverter {
             else
                 ""
 
-        val bgColor =
-            if (plan.background.mode == BackgroundModeDto.COLOR)
-                plan.background.colorHex ?: "#FFFFFF"
-            else
-                plan.background.colorHex ?: "#FFFFFF"
+        val bgColor = plan.background.colorHex ?: ""
+
+
 
         val layersJson = plan.layers.joinToString(",") { layer ->
             when (layer) {
@@ -91,5 +90,10 @@ class EditorJsonConverter {
            "rotate":${pos.rotate},"zIndex":${pos.zIndex},"opacity":${pos.opacity}}"""
 
     private fun escapeJson(text: String): String =
-        text.replace("\"", "\\\"")
+        text.replace("\\", "\\\\")
+            .replace("\"", "\\\"")
+            .replace("\n", "\\n")
+            .replace("\r", "\\r")
+            .replace("\t", "\\t")
+
 }

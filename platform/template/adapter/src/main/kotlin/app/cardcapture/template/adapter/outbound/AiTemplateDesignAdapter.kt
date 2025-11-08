@@ -30,16 +30,19 @@ class AiTemplateDesignAdapter(
     }
 
     private fun TemplateLayoutPlanResult.toTemplateResult(): AiTemplateDesignResult {
-        val bg = BackgroundPlanDto(
-            mode = when (background.mode.uppercase()) {
-                "IMAGE" -> BackgroundModeDto.IMAGE
-                else -> BackgroundModeDto.COLOR
-            },
-            colorHex = background.colorHex,
-            prompt = background.prompt,
-            url = null,
-            opacity = background.opacity
-        )
+        val bg = when (background.mode.uppercase()) {
+            "IMAGE" -> BackgroundPlanDto.image(
+                prompt = requireNotNull(background.prompt),
+                opacity = background.opacity
+            )
+
+            "COLOR" -> BackgroundPlanDto.color(
+                colorHex = requireNotNull(background.colorHex) { "COLOR mode background colorHex is null" },
+                opacity = background.opacity
+            )
+
+            else -> error("Unknown background mode: ${background.mode}")
+        }
 
         val layers = layers.map { layer ->
             when (layer.type.lowercase()) {
