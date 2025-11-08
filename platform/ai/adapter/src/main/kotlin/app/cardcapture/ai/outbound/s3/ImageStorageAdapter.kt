@@ -17,10 +17,9 @@ class ImageStorageAdapter(
 ) : ImageStoragePort {
 
 
-    override fun upload(bytes: ByteArray, key: String, fileName: String): String {
+    override fun upload(bytes: ByteArray, key: String): String {
         val safePrefix = key.trimEnd('/')
-        val safeFileName = makeFileName(fileName)
-        val objectKey = "$safePrefix/${UUID.randomUUID()}_$safeFileName"
+        val objectKey = "$safePrefix/${UUID.randomUUID()}.png"
 
 
         val request = PutObjectRequest.builder()
@@ -33,14 +32,5 @@ class ImageStorageAdapter(
 
 
         return "https://$bucket.s3.$region.amazonaws.com/$objectKey"
-    }
-
-    private fun makeFileName(name: String): String {
-        val safeName = name
-            .take(30)
-            .replace(Regex("[^a-zA-Z0-9가-힣]"), "_")
-            .trim('_')
-
-        return "${safeName}.png"
     }
 }

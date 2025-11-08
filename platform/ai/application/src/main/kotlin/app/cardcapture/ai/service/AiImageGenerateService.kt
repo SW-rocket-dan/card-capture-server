@@ -14,6 +14,6 @@ class AiImageGenerateService(
 
     override fun generate(command: AiImageGenerateCommand): String {
         val byteArrays = imageModelPort.generate(command.prompt, command.model.name)
-        return imageStoragePort.upload(byteArrays, "generate", command.prompt)
+        return imageStoragePort.upload(byteArrays, "generate")
     }
 }
