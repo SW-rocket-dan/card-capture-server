@@ -20,7 +20,7 @@ data class BackgroundPlanDto private constructor(
         }
 
         fun image( prompt: String, opacity: Int = 100): BackgroundPlanDto {
-            require(prompt.isNotBlank()) { "url must not be blank for IMAGE mode" }
+            require(prompt.isNotBlank()) { "prompt must not be blank for IMAGE mode" }
             return BackgroundPlanDto(
                 mode = BackgroundModeDto.IMAGE,
                 colorHex = null,
