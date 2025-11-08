@@ -6,5 +6,6 @@ data class AiTemplateDesignPortCommand(
     val color: String,
     val prompt: String,
     val model : String,
+    val llmModel: String,
 ) {
 }

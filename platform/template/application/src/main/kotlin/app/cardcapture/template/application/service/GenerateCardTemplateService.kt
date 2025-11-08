@@ -27,6 +27,7 @@ class GenerateCardTemplateService(
                 color = command.color,
                 prompt = command.prompt,
                 model = command.model,
+                llmModel = "GPT" // TODO 현재 기획상 단일 LLM 사용
             ),
         )
 

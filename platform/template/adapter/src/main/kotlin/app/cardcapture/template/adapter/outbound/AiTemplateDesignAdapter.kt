@@ -17,7 +17,7 @@ class AiTemplateDesignAdapter(
     override fun design(prompt: AiTemplateDesignPortCommand): AiTemplateDesignResult {
         val design: TemplateLayoutPlanResult = aiTemplateDesignUseCase.design(
             AiTemplateDesignCommand.ofOrThrow(
-                llmModel = "GPT",
+                llmModel = prompt.llmModel,
                 imageModel = prompt.model,
                 purpose = prompt.purpose,
                 texts = prompt.texts,
